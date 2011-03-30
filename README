@@ -1,0 +1,6 @@
+Demonstration of
+- Re-entrant parser with flex/bison
+- Parsing basic grammar (as spoken by a real toddler)
+- Creating a Python extension in C/C++
+
+Check the .ll and .yy files for grammar/phrases
