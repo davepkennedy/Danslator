@@ -1,4 +1,9 @@
+#ifdef __MACOSX__
 #include <Python/Python.h>
+#else
+#include <Python.h>
+#endif
+
 #include <sstream>
 
 #include "driver.h"
