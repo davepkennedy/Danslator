@@ -50,6 +50,7 @@ typedef int16_t flex_int16_t;
 typedef uint16_t flex_uint16_t;
 typedef int32_t flex_int32_t;
 typedef uint32_t flex_uint32_t;
+typedef uint64_t flex_uint64_t;
 #else
 typedef signed char flex_int8_t;
 typedef short int flex_int16_t;
@@ -318,7 +319,7 @@ int yyFlexLexer::yywrap() { return 1; }
  */
 #define YY_DO_BEFORE_ACTION \
 	(yytext_ptr) = yy_bp; \
-	yyleng = (size_t) (yy_cp - yy_bp); \
+	yyleng = (yy_size_t) (yy_cp - yy_bp); \
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
@@ -453,7 +454,7 @@ static yyconst flex_int16_t yy_chk[108] =
 #include "parser.tab.hh"
 #undef yylex
 typedef yy::parser::token token;
-#line 457 "lex.yy.cc"
+#line 458 "lex.yy.cc"
 
 #define INITIAL 0
 
@@ -555,7 +556,7 @@ YY_DECL
     
 #line 9 "scanner.ll"
 
-#line 559 "lex.yy.cc"
+#line 560 "lex.yy.cc"
 
 	if ( !(yy_init) )
 		{
@@ -773,7 +774,7 @@ YY_RULE_SETUP
 #line 36 "scanner.ll"
 ECHO;
 	YY_BREAK
-#line 777 "lex.yy.cc"
+#line 778 "lex.yy.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -961,9 +962,9 @@ void yyFlexLexer::switch_streams( std::istream* new_in, std::ostream* new_out )
 }
 
 #ifdef YY_INTERACTIVE
-int yyFlexLexer::LexerInput( char* buf, int /* max_size */ )
+size_t yyFlexLexer::LexerInput( char* buf, size_t /* max_size */ )
 #else
-int yyFlexLexer::LexerInput( char* buf, int max_size )
+size_t yyFlexLexer::LexerInput( char* buf, size_t max_size )
 #endif
 {
 	if ( yyin->eof() || yyin->fail() )
@@ -990,7 +991,7 @@ int yyFlexLexer::LexerInput( char* buf, int max_size )
 #endif
 }
 
-void yyFlexLexer::LexerOutput( const char* buf, int size )
+void yyFlexLexer::LexerOutput( const char* buf, size_t size )
 {
 	(void) yyout->write( buf, size );
 }
