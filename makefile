@@ -1,14 +1,14 @@
 CPPFLAGS := -lfl
 
-.INTERMEDIATE: parser.tab.c lex.yy.c parser.tab.h
+.INTERMEDIATE: parser.tab.cc lex.yy.cc parser.tab.h
 
 
-danslator: lex.yy.c parser.tab.c parser.tab.h
+danslator: lex.yy.cc parser.tab.cc
 	gcc -o $@ $? $(CPPFLAGS)
 
-lex.yy.c: lexer.l
+lex.yy.c: scanner.ll
 	flex $? 
 
-parser.tab.c: parser.y
+parser.tab.cc: parser.yy
 	bison -d $?
 
